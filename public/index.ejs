@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S3 FILE UPLOAD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>S3 FILE UPLOAD</h1>
+    <form action="/upload" method="POST" name="uploadForm" enctype="multipart/form-data">
+        <input id="file-input" type="file" name="uploadFile" >
+        <input type="submit" value="업로드">
+    </form>
+    <% if(result) { %>
+    <div class="class-uploaded">
+        <% 
+        Object.entries(result).forEach(obj => { 
+            %>
+            <div class="file-type"><%= obj[0] %></div>
+            <ul class="file">
+                <% obj[1].forEach(data => {%>
+                    <li class="data"><%= data %></li>
+                <% }); %>
+            </ul>
+            <hr>
+            <%
+        });
+        %>
+    </div>
+    <% } %>
+    
+</body>
+</html>
